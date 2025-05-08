@@ -1,26 +1,143 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+.section {
+    scroll-snap-align: start;
+    height: 100vh;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base card style */
+.div-center-border {
+    position: relative;
+    padding: 20px;
+    border: 5px solid #575757;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 500px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Background GIF layer */
+.div-center-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Black overlay on hover */
+.div-center-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0); /* No overlay initially */
+    transition: background 0.3s ease-in-out;
+    z-index: 2;
+}
+
+/* Add black gradient overlay on hover */
+.div-center-border:hover::after {
+    background: rgba(0, 0, 0, 0.5); /* 50% black overlay */
+}
+
+/* Ensure content stays above background + overlay */
+.div-center-border > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* Text fade-in (optional) */
+.div-center-border h2,
+.div-center-border p {
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.div-center-border:hover h2,
+.div-center-border:hover p {
+    opacity: 1;
+}
+
+/* Themed backgrounds */
+.bg-water::before {
+    background-image: url('/water.gif');
+}
+
+.bg-fire::before {
+    background-image: url('/fire.gif');
+}
+
+.bg-elec::before {
+    background-image: url('/elec.gif');
+}
+
+.bg-tree::before {
+    background-image: url('/tree.gif');
+}
+
+.tree-background {
+    position: relative; /* Make the footer a positioning context */
+    padding: 20px;
+    bottom: 0;
+    overflow: hidden; /* Prevent overflow of absolutely positioned elements */
+}
+
+.tree-background .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: repeat-x;
+    background-size: cover;
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+}
+
+.tree-background .background-light {
+    background-image: url('/forest-light.svg');
+    opacity: 1; /* Initially visible */
+}
+
+.tree-background .background-dark {
+    background-image: url('/forest-dark.svg');
+    opacity: 0; 
+}
+
+.tree-background:hover .background-light {
+    opacity: 0; 
+}
+
+.tree-background:hover .background-dark {
+    opacity: 1; 
+}
+
+.tree-background .content {
+    position: relative; 
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; 
+    will-change: opacity;
+}
+.tree-background:hover .content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.tree-background-ani {
+    background-image: url('/footer-art-2.svg');
+    background-repeat: repeat-x;
+    background-size: contain;
+    padding: 20px;
+    bottom: 0;
+    transition: background 0.3s ease-in-out;
 }
