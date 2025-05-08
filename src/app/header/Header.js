@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import '../styles.css'; // Add transition styles here if needed
-import Image from 'next/image';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,7 +23,7 @@ const Header = () => {
         className={`flex items-center transition-all duration-1000 ${isScrolled ? 'justify-between' : 'justify-center'
           }`}
       >
-        <Image
+        <img
           src="/logo.svg"
           alt="logo"
           className={`transition-all duration-1000 ease-in-out ${isScrolled ? 'w-[5%]' : 'w-[8%]'
