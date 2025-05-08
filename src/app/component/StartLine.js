@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import '../styles.css';
+import Image from 'next/image';
 
 const Component = () => {
   const { scrollYProgress } = useScroll();
@@ -23,7 +24,7 @@ const Component = () => {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Base logo */}
-              <img
+              <Image
                 src='/chatgpt-logo.svg'
                 alt='chatgpt-logo'
                 className='w-full'
@@ -31,7 +32,7 @@ const Component = () => {
               
               {/* Rain overlay */}
               {isHovered && (
-                <img
+                <Image
                   src='/rain-raining.gif'
                   alt='rain effect'
                   className='absolute top-[-80px] left-[-5px] w-full pointer-events-none transition-all duration-300 ease-in-out'

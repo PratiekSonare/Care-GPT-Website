@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import Image from 'next/image';
 
 const cardVariants = {
   hidden: { opacity: 0, x: -200, scale: 0.9 },

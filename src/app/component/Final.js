@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 
 const Final = () => {
   const { scrollYProgress } = useScroll();
@@ -13,7 +14,7 @@ const Final = () => {
           <p className='text-5xl p-light cursor-pointer'>Download now. </p>
           <span className="absolute left-0 bottom-[-5px] w-0 h-[4px] bg-green-600 rounded-lg transition-all duration-300 group-hover:w-full"></span>
         </button>
-        <motion.img 
+        <motion.Image 
         src='/caregpt-logo.svg' 
         alt='caregpt-logo' 
         className='w-[20%] mt-20'
@@ -27,7 +28,7 @@ const Final = () => {
           repeat: Infinity,
           ease: 'easeInOut'
         }}
-        ></motion.img>
+        ></motion.Image>
       </div>
     </div>
   )
