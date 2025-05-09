@@ -1,45 +1,72 @@
-import Image from "next/image";
-import Circle from "./Circle";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+
 import Header from "./header/Header";
 import StartLine from "./component/StartLine";
-import Blocks from './component/Blocks'
+import Blocks from './component/Blocks';
 import Video from "./component/Video";
-import Final from "./component/Final";
+import AltFinal from './component/AltFinal';
 import Footer from "./footer/Footer";
-import MastiFooter from "./footer/MastiFooter";
+
+import './styles.css';
 
 export default function Home() {
+  const [clouds, setClouds] = useState([]);
+
+  useEffect(() => {
+    const cloudCount = 6;
+    const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
+
+    const generatedClouds = Array.from({ length: cloudCount }, (_, i) => ({
+      id: i,
+      top: Math.random() * 4000,
+      size: 5 + Math.random() * 10,
+      startX: -200, // start before screen
+      endX: screenWidth + 200, // go past screen
+      duration: 10 + Math.random() * 10, // faster: 5s to 10s
+    }));
+
+    setClouds(generatedClouds);
+  }, []);
+
   return (
     <>
       <Header />
-
-      <div className="">
-        {/* <h1>Scroll Down to See the Circle</h1>
-        <Circle /> */}
-      </div>
-
       <div className='my-[450px]'></div>
-
       <StartLine />
 
-      <div className='my-[700px]'></div>
+      {/* ☁️ Cloud Animation */}
+      {clouds.map(cloud => (
+        <motion.img
+          key={cloud.id}
+          src='/cloud.webp'
+          alt='cloud'
+          className="opacity-50 absolute -z-10 pointer-events-none"
+          style={{
+            top: `${cloud.top}px`,
+            width: `${cloud.size}%`,
+            left: 0,
+          }}
+          initial={{ x: cloud.startX }}
+          animate={{ x: cloud.endX }}
+          transition={{
+            duration: cloud.duration,
+            ease: 'linear',
+            repeat: Infinity,
+          }}
+        />
+      ))}
 
+      <div className='my-[1000px]'></div>
       <Blocks />
-
       <div className='my-[300px]'></div>
-
-      <Video />
-
-      {/* <div className=''></div> */}
-
+      <section id="about"><Video /></section>
       <div className='my-[500px]'></div>
-
-      <Final />
-
+      <AltFinal />
       <div className='my-[100px]'></div>
+      <section id="contact"><Footer /></section>
 
-      <Footer />
-      {/* <MastiFooter /> */}
     </>
   );
 }

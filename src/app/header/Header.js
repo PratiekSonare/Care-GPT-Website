@@ -33,19 +33,19 @@ const Header = () => {
         {isScrolled && (
           <nav className="hidden md:flex flex-row gap-6 raleway-mid">
             <button className='group block relative w-fit'>
-              <p className='cursor-pointer  mt-2'>About</p>
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-600 rounded-lg transition-all duration-300 group-hover:w-full"></span>
+              <a href='#about' className='cursor-pointer  mt-2'>About</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#34d399] rounded-lg transition-all duration-300 group-hover:w-full"></span>
             </button>
             <button className='block group relative w-fit'>
-            <p className='cursor-pointer  mt-2'>Contact</p>
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-600 rounded-lg transition-all duration-300 group-hover:w-full"></span>
+            <a href='#contact' className='cursor-pointer  mt-2'>Contact</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#34d399] rounded-lg transition-all duration-300 group-hover:w-full"></span>
             </button>
           </nav>
         )}
 
         {isScrolled && (
           <div>
-            <button className="px-5 py-3 bg-green-400 hover:bg-green-600 hover:text-green-400 transition-all duration-300 rounded-xl raleway-midbold">Download</button>
+            <button className="px-5 py-3 bg-[#34d399] hover:bg-green-700 hover:text-[#34d399] transition-all duration-300 rounded-xl raleway-midbold">Download</button>
           </div>
         )}
       </div>

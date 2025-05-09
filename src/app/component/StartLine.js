@@ -6,9 +6,9 @@ import '../styles.css';
 
 const Component = () => {
   const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0.45, 0.2], [0, 1]);
-  const opacity = useTransform(scrollYProgress, [0.45, 0.2], [0, 1]);
-  const translateY = useTransform(scrollYProgress, [0, 0.5], [0, 1000]);
+  const scale = useTransform(scrollYProgress, [1, 0.2], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [1, 0.2], [0, 1]);
+  const translateY = useTransform(scrollYProgress, [0, 0.3], [0, 1000]);
   const [isHovered, setIsHovered] = useState(false);
 
   return (

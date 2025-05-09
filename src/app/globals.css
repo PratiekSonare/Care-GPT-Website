@@ -2,6 +2,21 @@
 
 @import "tailwindcss";
 
+html {
+    scroll-behavior: smooth;
+  }
+
+body {
+position: relative;
+overflow-x: hidden;
+}
+  
+
+::selection {
+background-color: #34d399; /* Tailwind's green-400 */
+color: white;
+}
+  
 .section {
     scroll-snap-align: start;
     height: 100vh;
@@ -141,3 +156,29 @@
     bottom: 0;
     transition: background 0.3s ease-in-out;
 }
+
+/* 
+Header {
+    scroll-snap-align: initial;
+  }
+  
+  StartLine {
+    scroll-snap-align: start;
+  }
+  
+  Blocks {
+    scroll-snap-align: start;
+  }
+  
+  Video {
+    scroll-snap-align: start;
+  }
+  
+  Final {
+    scroll-snap-align: start;
+  }
+  
+  Footer {
+    scroll-snap-align: start;
+  }
+   */
